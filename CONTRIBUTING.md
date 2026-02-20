@@ -1,6 +1,6 @@
 # Guia de Contribuição
 
-Obrigado por querer contribuir com a [Lexato](https://lexato.com.br). Este projeto é a primeira e única extensão de captura de provas digitais open source do Brasil, e contribuições da comunidade são fundamentais para manter esse compromisso com transparência e segurança.
+Obrigado por querer contribuir com a [Lexato](https://lexato.com.br). Este projeto é a primeira e única ferramenta de captura de provas digitais open source do Brasil, e contribuições da comunidade são fundamentais para manter esse compromisso com transparência e segurança.
 
 ## Como Contribuir
 
@@ -8,7 +8,7 @@ Obrigado por querer contribuir com a [Lexato](https://lexato.com.br). Este proje
 
 1. Verifique se o bug já não foi reportado em [Issues](https://github.com/LexatoBR/lexato-extension/issues)
 2. Abra uma issue com o template de bug report
-3. Inclua: versão do Chrome, versão da extensão, passos para reproduzir, comportamento esperado vs. atual
+3. Inclua: versão do Chrome, versão da ferramenta, passos para reproduzir, comportamento esperado vs. atual
 
 ### Sugerindo Melhorias
 

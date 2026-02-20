@@ -68,6 +68,6 @@ VITE_SENTRY_DSN=https://SUA_KEY@SEU_ORG.ingest.us.sentry.io/SEU_PROJETO_ID
 
 ## Escopo da Auditoria
 
-O código neste repositório cobre a camada de captura (extensão Chrome). O processamento backend — incluindo certificação blockchain (Polygon, Arbitrum, Optimism), carimbo ICP-Brasil e armazenamento S3 Object Lock — é operado pela [Lexato](https://lexato.com.br) e não faz parte deste repositório.
+O código neste repositório cobre a camada de captura (ferramenta para Chrome). O processamento backend — incluindo certificação blockchain (Polygon, Arbitrum, Optimism), carimbo ICP-Brasil e armazenamento S3 Object Lock — é operado pela [Lexato](https://lexato.com.br) e não faz parte deste repositório.
 
 Para mais informações sobre a plataforma completa, visite [lexato.com.br](https://lexato.com.br).
