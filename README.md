@@ -7,9 +7,9 @@
 [![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-disponível-blue)](https://chromewebstore.google.com)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue)](https://developer.chrome.com/docs/extensions/mv3/)
 
-## O que é o Lexato?
+## O que é a Lexato?
 
-A[Lexato](https://lexato.com.br) é uma plataforma brasileira de registro e certificação de provas digitais que combina:
+A [Lexato](https://lexato.com.br) é uma plataforma brasileira de registro e certificação de provas digitais que combina:
 
 - **Blockchain** (Polygon, Arbitrum, Optimism) para imutabilidade das evidências
 - **ICP-Brasil** para assinatura digital com validade jurídica
@@ -113,29 +113,17 @@ tests/
 
 ## Arquitetura
 
-```
-┌─────────────────────────────────────────────────────┐
-│                   Chrome Extension                   │
-│                                                     │
-│  ┌──────────┐  ┌──────────┐  ┌──────────────────┐  │
-│  │  Popup   │  │SidePanel │  │  Content Script  │  │
-│  └────┬─────┘  └────┬─────┘  └────────┬─────────┘  │
-│       │              │                 │             │
-│       └──────────────┴─────────────────┘             │
-│                      │ chrome.runtime.sendMessage     │
-│              ┌───────▼────────┐                      │
-│              │ Service Worker │                      │
-│              │  (Background)  │                      │
-│              └───────┬────────┘                      │
-└──────────────────────┼──────────────────────────────┘
-                       │
-          ┌────────────┴────────────┐
-          │                         │
-   ┌──────▼──────┐          ┌───────▼──────┐
-   │  Supabase   │          │  Lexato API  │
-   │  (Auth +    │          │  (backend)   │
-   │   Realtime) │          └──────────────┘
-   └─────────────┘
+```mermaid
+graph TD
+    subgraph ext["Chrome Extension"]
+        Popup
+        SidePanel
+        ContentScript["Content Script"]
+        Popup & SidePanel & ContentScript -->|chrome.runtime.sendMessage| SW["Service Worker<br/>(Background)"]
+    end
+
+    SW --> Supabase["Supabase<br/>(Auth + Realtime)"]
+    SW --> API["Lexato API<br/>(backend)"]
 ```
 
 ## Segurança
