@@ -1,0 +1,61 @@
+/**
+ * Estilos do Page Description Header
+ * Combinação de Ícone Lateral + Separador Vertical
+ */
+
+.page-description-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+  margin-bottom: 16px;
+}
+
+/* Container do Ícone (baseado no PageHeader04) */
+.page-description-header .header-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(0, 222, 165, 0.1);
+  border-radius: 12px;
+  color: var(--green-bright);
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 222, 165, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.page-description-header .header-icon-container svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Linha Separadora Vertical (baseado no PageHeader11, mas como divisor) */
+.page-description-header .header-separator-vertical {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+/* Texto */
+.page-description-header .header-text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page-description-header h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.page-description-header p {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}

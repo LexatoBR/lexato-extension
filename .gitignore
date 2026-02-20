@@ -1,0 +1,38 @@
+# Dependências
+node_modules/
+
+# Arquivos de ambiente (NUNCA commitar — contêm chaves privadas)
+.env
+.env.local
+.env.production
+.env.staging
+.env*.local
+
+# Builds e artefatos locais
+dist/
+coverage/
+*.zip
+
+# Arquivos de lock alternativos (use package-lock.json)
+pnpm-lock.yaml
+yarn.lock
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+*.swp
+
+# IDEs e editores
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Arquivos de debug e notas internas
+DEBUG-*.md
+fix-*.md
+
+# Store assets (screenshots para a Chrome Web Store)
+store-assets/

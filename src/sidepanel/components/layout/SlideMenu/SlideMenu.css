@@ -1,0 +1,330 @@
+/**
+ * SlideMenu CSS - Lexato Chrome Extension (Side Panel)
+ * 
+ * Menu lateral deslizante com perfil do usuario no topo,
+ * botao fechar na borda externa, navegacao e logout.
+ * Adaptado para Side Panel com layout responsivo (min-width: 360px).
+ */
+
+/* === CONTAINER === */
+
+.slide-menu-container {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.slide-menu-container.open {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* === OVERLAY === */
+
+.slide-menu-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.slide-menu-container.open .slide-menu-overlay {
+  opacity: 1;
+}
+
+/* === SIDEBAR - Responsivo para Side Panel === */
+
+.slide-menu-sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(280px, calc(100% - 48px));
+  height: 100%;
+  background: linear-gradient(180deg, #141316 0%, #0F0E10 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
+}
+
+.slide-menu-container.open .slide-menu-sidebar {
+  transform: translateX(0);
+}
+
+/* === BOTAO FECHAR === */
+
+.slide-menu-close {
+  position: absolute;
+  top: 16px;
+  right: -44px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 14, 16, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 1;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.slide-menu-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.slide-menu-close:active {
+  transform: scale(0.95);
+}
+
+/* === PERFIL DO USUARIO === */
+
+.slide-menu-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px 12px;
+  flex-shrink: 0;
+}
+
+.slide-menu-profile-avatar {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a1a1e, #252528);
+  border: 2px solid rgba(0, 222, 165, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(0, 222, 165, 0.15);
+}
+
+.slide-menu-profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.slide-menu-profile-avatar-initials {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--green-bright);
+  letter-spacing: 0.5px;
+  user-select: none;
+}
+
+.slide-menu-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.slide-menu-profile-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slide-menu-profile-email {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* === SEPARADOR === */
+
+.slide-menu-divider {
+  height: 1px;
+  margin: 4px 20px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+/* === NAVEGACAO === */
+
+.slide-menu-nav {
+  padding: 4px 12px;
+  flex-shrink: 0;
+}
+
+.slide-menu-section-title {
+  display: block;
+  padding: 6px 12px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+}
+
+/* === ITEM DO MENU === */
+
+.slide-menu-item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  font-family: inherit;
+}
+
+.slide-menu-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.slide-menu-item.active {
+  background: rgba(0, 222, 165, 0.1);
+}
+
+.slide-menu-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.slide-menu-item:hover .slide-menu-item-icon {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+}
+
+.slide-menu-item.active .slide-menu-item-icon {
+  background: rgba(0, 222, 165, 0.15);
+  color: var(--green-bright);
+}
+
+.slide-menu-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  flex: 1;
+}
+
+.slide-menu-item-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.slide-menu-item.active .slide-menu-item-label {
+  color: var(--green-bright);
+}
+
+.slide-menu-item-description {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  line-height: 1.2;
+}
+
+.slide-menu-item-indicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  background: var(--green-bright);
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 8px rgba(0, 222, 165, 0.5);
+}
+
+/* === ICONE DE LINK EXTERNO === */
+
+.slide-menu-external-icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-tertiary);
+  opacity: 0.7;
+}
+
+/* === FOOTER === */
+
+.slide-menu-footer {
+  padding: 8px 20px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.slide-menu-logout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255, 107, 107, 0.06);
+  border: 1px solid rgba(255, 107, 107, 0.15);
+  border-radius: 8px;
+  color: #ff6b6b;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.slide-menu-logout:hover {
+  background: rgba(255, 107, 107, 0.12);
+  border-color: rgba(255, 107, 107, 0.3);
+}
+
+.slide-menu-logout-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.slide-menu-version {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  text-align: center;
+}

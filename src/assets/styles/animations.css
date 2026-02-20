@@ -1,0 +1,319 @@
+/**
+ * Microanimações - Lexato Chrome Extension
+ * 
+ * Transições suaves e feedback visual
+ * Respeita prefers-reduced-motion para acessibilidade
+ * 
+ * @see branding/tipografia/identidade_visual.md
+ */
+
+/* === FADE IN COM SCALE - entrada de elementos === */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 300ms ease forwards;
+}
+
+/* === SLIDE UP - listas e cards === */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 300ms ease forwards;
+}
+
+/* === TRANSIÇÃO ENTRE ABAS (fadeSlideIn) === */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.tab-content {
+  animation: fadeSlideIn var(--transition-slow, 300ms) ease-out;
+}
+
+.animate-fade-slide-in {
+  animation: fadeSlideIn var(--transition-slow, 300ms) ease-out;
+}
+
+/* === ENTRADA DE MODAL (modalFadeIn) === */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-modal-fade-in {
+  animation: modalFadeIn var(--transition-slow, 300ms) ease-out;
+}
+
+/* === MODAL SLIDE IN (com translateY) === */
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal-slide-in {
+  animation: modalSlideIn var(--transition-slow, 300ms) ease-out;
+}
+
+/* === OVERLAY FADE IN === */
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-overlay-fade-in {
+  animation: overlayFadeIn var(--transition-base, 200ms) ease-out;
+}
+
+/* === MENU FADE IN (lateral) === */
+@keyframes menuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-menu-fade-in {
+  animation: menuFadeIn var(--transition-base, 200ms) ease-out;
+}
+
+/* === TOOLTIP SLIDE IN (sidebar) === */
+@keyframes tooltipSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+.sidebar-tooltip {
+  animation: tooltipSlideIn var(--transition-fast, 150ms) ease-out;
+}
+
+/* === BOUNCE DIAGONAL (ícones externos) === */
+@keyframes diagonalBounce {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2px, -2px);
+  }
+}
+
+.animate-diagonal-bounce {
+  animation: diagonalBounce 0.4s ease-in-out;
+}
+
+/* Aplicar no hover de links externos */
+.external-link-icon {
+  transition: transform var(--transition-fast, 150ms);
+}
+
+.external-link:hover .external-link-icon {
+  animation: diagonalBounce 0.4s ease-in-out;
+}
+
+/* === SPINNER (loading) === */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* === PULSE (loading sutil) === */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* === PULSE GLOW - elementos de destaque === */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* === SHIMMER (skeleton loading) === */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* === SHAKE - erros === */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-4px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(4px);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* === PROGRESS BAR INDETERMINADO === */
+@keyframes indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-indeterminate {
+  animation: indeterminate 1.5s ease-in-out infinite;
+}
+
+/* === STAGGER ANIMATION PARA LISTAS === */
+.stagger-item {
+  animation: slideUp 300ms ease forwards;
+  opacity: 0;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0ms; }
+.stagger-item:nth-child(2) { animation-delay: 50ms; }
+.stagger-item:nth-child(3) { animation-delay: 100ms; }
+.stagger-item:nth-child(4) { animation-delay: 150ms; }
+.stagger-item:nth-child(5) { animation-delay: 200ms; }
+.stagger-item:nth-child(6) { animation-delay: 250ms; }
+.stagger-item:nth-child(7) { animation-delay: 300ms; }
+.stagger-item:nth-child(8) { animation-delay: 350ms; }
+.stagger-item:nth-child(9) { animation-delay: 400ms; }
+.stagger-item:nth-child(10) { animation-delay: 450ms; }
+
+/* === SLIDE IN RIGHT - Toast notifications === */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight var(--transition-slow, 300ms) ease-out;
+}
+
+/* === ACESSIBILIDADE: REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .tab-content,
+  .animate-fade-slide-in,
+  .animate-fade-in-scale,
+  .animate-slide-up,
+  .animate-slide-in-right,
+  .animate-modal-fade-in,
+  .animate-modal-slide-in,
+  .animate-overlay-fade-in,
+  .animate-menu-fade-in,
+  .animate-diagonal-bounce,
+  .animate-spin,
+  .animate-pulse,
+  .animate-pulse-glow,
+  .animate-shimmer,
+  .animate-shake,
+  .animate-indeterminate,
+  .stagger-item {
+    animation: none;
+    opacity: 1;
+  }
+}

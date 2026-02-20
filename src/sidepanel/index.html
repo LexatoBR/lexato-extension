@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lexato - Provas Digitais</title>
+  <meta name="description" content="Lexato - Plataforma de captura e certificação de provas digitais">
+  <meta name="color-scheme" content="dark">
+  <style>
+    /*
+     * Dimensões do Side Panel: mínimo 360px (Chrome minimum)
+     * Fundo: Onyx (#0F0E10) - NUNCA usar azul
+     */
+    html, body {
+      width: 100%;
+      min-width: 360px;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      background-color: #0F0E10; /* Onyx - background principal */
+      color: #F7F9FB; /* White Lilac - texto primário */
+    }
+    #root {
+      width: 100%;
+      min-width: 360px;
+      height: 100%;
+      min-height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="./index.tsx"></script>
+</body>
+</html>

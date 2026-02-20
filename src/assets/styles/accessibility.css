@@ -1,0 +1,225 @@
+/**
+ * Estilos de Acessibilidade - Lexato Chrome Extension
+ * 
+ * Garante conformidade com WCAG AA:
+ * - Focus states visíveis para navegação por teclado
+ * - Tamanhos mínimos de toque (44px)
+ * - Contraste adequado
+ * 
+ * @see Requirements 12.1-12.4
+ */
+
+/* === FOCUS STATES GLOBAIS === */
+
+/* Remove outline padrão e usa custom */
+*:focus {
+  outline: none;
+}
+
+/* Focus visível para navegação por teclado */
+*:focus-visible {
+  outline: 2px solid var(--green-bright, #00DEA5);
+  outline-offset: 2px;
+}
+
+/* Focus em inputs - estilo específico */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  border-color: var(--glass-border-active, rgba(0, 222, 165, 0.5));
+  box-shadow: 0 0 0 3px rgba(0, 222, 165, 0.2);
+}
+
+/* Focus em botões */
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--green-bright, #00DEA5);
+  outline-offset: 2px;
+}
+
+/* Focus em links */
+a:focus-visible {
+  outline: 2px solid var(--green-bright, #00DEA5);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* === TAMANHOS MÍNIMOS DE TOQUE (44px) === */
+
+/* Elementos interativos devem ter no mínimo 44x44px */
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Botões da sidebar */
+.sidebar-item {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Botões de ação no header */
+.header-action {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Checkbox e radio customizados */
+.checkbox-target,
+.radio-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === SKIP LINK PARA NAVEGAÇÃO === */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: 8px 16px;
+  background: var(--green-bright, #00DEA5);
+  color: var(--bg-primary, #0F0E10);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* === INDICADORES VISUAIS NÃO-CROMÁTICOS === */
+
+/* Sempre usar ícone + texto para status */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-indicator::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Cores dos indicadores (com ícone como backup) */
+.status-indicator--success::before {
+  background-color: var(--color-success, #00DEA5);
+}
+
+.status-indicator--error::before {
+  background-color: var(--color-error, #EF5350);
+}
+
+.status-indicator--warning::before {
+  background-color: var(--color-warning, #FFA726);
+}
+
+.status-indicator--pending::before {
+  background-color: var(--color-pending, #FFCA28);
+}
+
+.status-indicator--processing::before {
+  background-color: var(--color-processing, #42A5F5);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* === TEXTO PARA SCREEN READERS === */
+
+/* Classe para esconder visualmente mas manter acessível */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Mostrar apenas no focus (para skip links) */
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* === CONTRASTE ALTO (MODO DE ALTO CONTRASTE) === */
+
+@media (prefers-contrast: high) {
+  /* Aumentar contraste de bordas */
+  .glass-card,
+  .glass-panel,
+  .glass-input,
+  .glass-btn {
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Aumentar contraste de texto */
+  .text-secondary,
+  .text-tertiary,
+  .text-muted {
+    color: rgba(247, 249, 251, 0.9);
+  }
+
+  /* Focus mais visível */
+  *:focus-visible {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
+}
+
+/* === ANIMAÇÕES REDUZIDAS === */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Desabilitar todas as animações */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Manter indicadores de loading estáticos */
+  .animate-spin,
+  .animate-pulse,
+  .animate-pulse-glow {
+    animation: none !important;
+  }
+
+  /* Indicador de loading alternativo (estático) */
+  .loading-indicator {
+    opacity: 0.7;
+  }
+}
+
+/* === MODO ESCURO FORÇADO === */
+
+@media (prefers-color-scheme: dark) {
+  /* Já estamos em dark mode, mas garantir consistência */
+  :root {
+    color-scheme: dark;
+  }
+}

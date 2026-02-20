@@ -1,0 +1,342 @@
+LEXATO - Chrome Web Store Review Test Instructions
+====================================================
+
+Thank you for reviewing the Lexato extension. This document provides
+accurate step-by-step instructions to test all core features.
+
+Lexato is a digital evidence capture and certification platform for
+legal professionals. It captures screenshots and videos of web pages
+with full forensic metadata (SHA-256 hash, timestamp, DNS, WHOIS,
+SSL, geolocation, etc.) and certifies them on public blockchains
+(Polygon, Arbitrum, Optimism).
+
+
+TEST ACCOUNT CREDENTIALS
+------------------------
+Email:    [request from review team via secure channel]
+Password: [request from review team via secure channel]
+
+A test account with an active Pro plan and pre-loaded credits
+will be provided through the Chrome Web Store review notes.
+Each capture (screenshot or video) consumes 1 credit.
+
+
+OVERVIEW OF THE EXTENSION
+--------------------------
+The extension operates through a popup window (toolbar icon click).
+The popup contains:
+- Login screen (when not authenticated)
+- Capture wizard with type selection (Screenshot / Video)
+- Hamburger menu with navigation to History, Diagnostic, Settings
+- A separate Options page with full configuration
+
+For video capture specifically, after clicking "Iniciar Gravacao" in
+the popup, the popup closes and a Side Panel opens on the right side
+of the browser with recording controls (timer, navigation log, stop
+button). Screenshots are captured directly from the popup.
+
+
+STEP 1: OPEN THE EXTENSION
+---------------------------
+1. Click the Lexato icon in the Chrome toolbar.
+2. The popup window opens directly.
+
+
+STEP 2: LOGIN
+-------------
+1. In the popup, you will see the login screen with:
+   - Lexato logo at the top
+   - Tagline: "Capture e autentique provas digitais com validade
+     reconhecida judicialmente."
+   - "Acesse sua conta" heading
+   - Email input field
+   - "ou continue com" separator with a "Entrar com Google" button
+   - "Nao tem conta? Criar conta" link
+   - Footer with "Termos | Privacidade" links and language selector
+     (PT, EN, ES)
+
+2. Type the test email provided in the CWS review notes.
+   - As you start typing, the password field and "Entrar" button
+     will animate into view (the Google button hides).
+
+3. Enter the password provided in the CWS review notes.
+
+4. Click "Entrar" to log in.
+
+5. After successful login, you are redirected to the capture type
+   selection screen. The header now shows:
+   - Lexato logo (top-left)
+   - Hamburger menu icon (three lines)
+   - Credit balance badge (top-right, e.g., "50 creditos")
+
+
+STEP 3: SCREENSHOT CAPTURE
+---------------------------
+1. Navigate to any public website (e.g., https://example.com,
+   any news site, or social media page).
+
+2. In the popup, you will see the capture type selection with the
+   heading "Selecione a modalidade de captura" and two cards:
+   - "Screenshot" - Captures the full page with automatic scrolling.
+     Ideal for static pages, documents, and publications.
+   - "Video" - Records the screen with audio and real-time
+     navigation. Ideal for dynamic platforms and multimedia.
+
+3. Select "Screenshot". The card highlights with a green border.
+
+4. Below the capture type cards, "Instrucoes de Seguranca" (Security
+   Instructions) will appear showing 5 rules. Scroll through all
+   of them. The rules cover topics like:
+   - Automatic page scrolling during capture
+   - Extension isolation (disabling other extensions)
+   - Temporary input blocking during scrolling
+   - Review before blockchain registration
+   - Blockchain registration details (Polygon + Arbitrum)
+
+5. After reading all 5 instructions, the checkbox becomes enabled:
+   "Li e compreendi as instrucoes e aceito os Termos de Uso"
+   Check this checkbox.
+
+6. A warning note appears: "Nao feche este popup durante a captura
+   de screenshot."
+
+7. Click "Iniciar Captura" (Start Capture).
+
+8. The extension may ask for geolocation permission (optional,
+   you can deny it).
+
+9. The page will briefly reload to prepare for capture, then the
+   capture process begins automatically. A progress modal shows
+   the stages:
+   - Collecting forensic metadata (URL, title, DNS, WHOIS, SSL)
+   - Taking the screenshot (with automatic page scrolling)
+   - Calculating SHA-256 hashes
+   - Building the Merkle Tree
+   - Uploading to secure storage (AWS S3, sa-east-1)
+
+10. You can cancel the capture at any time by clicking the cancel
+    button on the progress modal.
+
+11. After completion, a success message appears and the capture
+    is saved. You can view it in the History section.
+
+
+STEP 4: VIDEO CAPTURE
+---------------------
+1. Navigate to any public website.
+
+2. In the popup capture type selection, select "Video".
+
+3. "Instrucoes de Seguranca" (Security Instructions) will appear
+   showing 5 rules, similar to screenshot. Scroll through all of
+   them to enable the checkbox.
+
+4. Check the terms checkbox: "Li e compreendi as instrucoes e
+   aceito os Termos de Uso".
+
+5. Click "Iniciar Gravacao" (Start Recording).
+
+6. The browser will request permission to share the tab for
+   recording. Click "Share" / "Allow".
+
+7. The popup closes automatically and a Side Panel opens on the
+   right side of the browser. The Side Panel shows the Video
+   Recording Panel with:
+   - Recording timer (elapsed time)
+   - Recording status indicator (red dot)
+   - Navigation log listing every page visited during recording
+     with timestamps and URLs
+   - "Parar Gravacao" (Stop Recording) button
+
+8. Navigate freely between pages while recording. Each page
+   navigation is automatically logged in the forensic navigation
+   log displayed in the Side Panel.
+
+9. You can cancel the recording at any time by clicking the
+   cancel/stop button.
+
+10. Click "Parar Gravacao" to stop recording.
+
+11. The extension processes the video: calculates hashes, collects
+    final metadata, and uploads to secure storage.
+
+12. The capture appears in History after processing completes.
+
+NOTE: Video capture also consumes 1 credit per capture.
+
+
+STEP 5: HAMBURGER MENU AND NAVIGATION
+--------------------------------------
+1. Click the hamburger menu icon (three horizontal lines) in the
+   popup header, next to the Lexato logo.
+
+2. A slide-out menu appears from the left showing:
+
+   USER INFO (top):
+   - User avatar (or initials), name, and email
+
+   NAVEGACAO (Navigation):
+   - "Nova Captura" - Return to the capture wizard
+   - "Historico" - Opens the web dashboard with recent captures
+     (opens in a new browser tab at app.lexato.com.br/capturas)
+   - "Diagnostico" - System diagnostic panel (inline in popup)
+
+   CONFIGURACOES (Settings):
+   - "Configuracoes" - Opens the full Options page (new tab)
+   - "Ajuda e Suporte" - Opens the help center (external link)
+
+   BOTTOM:
+   - "Sair da Conta" (Logout) button in red
+   - Version number (v1.0.0)
+
+3. Click "Historico" to open the web dashboard showing all your
+   captures with thumbnails, dates, URLs, and capture types.
+
+4. Click "Diagnostico" to see the system diagnostic panel inside
+   the popup, showing the current page's forensic metadata (DNS,
+   SSL, WHOIS, HTTP headers) without consuming any credits.
+   A "Voltar para Captura" link returns to the capture wizard.
+
+
+STEP 6: OPTIONS / SETTINGS PAGE
+--------------------------------
+1. From the hamburger menu, click "Configuracoes" (Settings).
+
+2. This opens the full Options page in a new tab at:
+   chrome-extension://[extension-id]/src/options/index.html
+
+3. The Options page has a header with the Lexato logo and
+   subtitle "Ajustes do Complemento", followed by these sections:
+
+   SOBRE (About):
+   - Extension name, version badge (e.g., v1.0.0), Manifest V3
+     badge, and description of the extension
+   - LINKS UTEIS (Useful Links):
+     - Documentacao (opens docs.lexato.com.br)
+     - Suporte (opens lexato.com.br/suporte)
+     - Politica de Privacidade (opens lexato.com.br/privacidade)
+     - Termos de Uso (opens lexato.com.br/termos)
+     - Codigo Fonte (opens GitHub repository)
+   - INFORMACOES TECNICAS (Technical Info):
+     - Version, Manifest V3, Framework (React 19),
+       Bundler (Vite + CRXJS)
+
+   PERFIL (Profile):
+   - User avatar (photo or initials), name, email
+   - Account type (Individual or Enterprise)
+   - Credit balance displayed prominently (large number)
+
+   SEGURANCA (Security):
+   - "Autenticacao de Dois Fatores (2FA)" with status indicator
+     (enabled/disabled) and button to manage/activate via web app
+   - "Redefinir Senha" (Reset Password) with link to web app
+   - User ID display (truncated UUID)
+
+   SAIR DA CONTA (Sign Out):
+   - Logout button with confirmation dialog ("Cancelar" / confirm)
+
+   CONFIGURACOES GERAIS (General Settings):
+
+   CAPTURA (Capture):
+   - Environment Isolation status (always active, mandatory)
+   - Storage retention: "5 anos (fixo)"
+   - Capture quality: "Alta qualidade (fixo)"
+
+   NOTIFICACOES (Notifications):
+   - "Habilitar notificacoes" checkbox toggle
+   - Controls browser notifications for capture completion
+
+   GEOLOCALIZACAO (Geolocation):
+   - "Sempre permitir localizacao precisa" radio option
+   - "Perguntar em cada captura" radio option (default)
+   - "Usar apenas localizacao aproximada (IP)" radio option
+   - Tip explaining that precise geolocation adds legal value
+
+   IDIOMA (Language):
+   - Portugues (BR) - selected by default
+   - English
+   - Espanol
+
+   Settings are saved automatically when changed.
+
+
+STEP 7: VERIFY A CERTIFICATE (Web Platform)
+--------------------------------------------
+After a capture is completed and certified on blockchain:
+1. Go to https://lexato.com.br/validar
+2. Enter the verification code from the certificate PDF, or
+   upload the PDF file directly.
+3. The platform verifies the blockchain certification and
+   displays the evidence details including hash, timestamp,
+   and blockchain transaction.
+
+
+STEP 8: LANGUAGE SWITCHING
+--------------------------
+The extension supports 3 languages: Portuguese (BR), English,
+and Spanish.
+
+- On the login screen: Use the PT / EN / ES buttons in the footer.
+- In the Options page: Change language in the "Idioma" section.
+- All UI text updates immediately without requiring a restart.
+
+
+PERMISSIONS USAGE SUMMARY
+--------------------------
+- host_permissions (<all_urls>): Required for captureVisibleTab()
+  from Side Panel (activeTab does not work with Side Panel per
+  Chrome's design). Also needed for content script injection on
+  any domain, since users capture evidence from any website.
+
+- storage: Stores authentication tokens and user preferences.
+
+- tabs: Identifies the active tab URL and title during capture.
+
+- scripting: Injects lockdown scripts during capture to prevent
+  DOM manipulation and ensure evidence integrity.
+
+- alarms: Schedules token refresh and certification status polling.
+
+- webNavigation: Monitors page navigations during video recording
+  to build the forensic navigation log.
+
+- offscreen: Creates offscreen document for MediaRecorder API
+  (video recording requires DOM access not available in service
+  workers).
+
+- sidePanel: Displays the video recording controls outside
+  the captured area (Side Panel opens only for video capture).
+
+- identity: OAuth2 authentication with Google via chrome.identity.
+
+- wasm-unsafe-eval (CSP): Required for hash-wasm library that
+  provides high-performance SHA-256 hashing via WebAssembly.
+  Explicitly permitted by Chrome for Manifest V3 extensions.
+
+Optional permissions (requested on demand via user gesture):
+- management: Isolates other extensions during capture to prevent
+  interference with evidence integrity.
+- notifications: Notifies when capture/certification completes.
+- tabCapture: Captures tab video stream for video recording.
+
+
+DATA HANDLING
+-------------
+- The extension only collects data when the user explicitly
+  initiates a capture. No background data collection occurs.
+- All data is transmitted over HTTPS/TLS and WSS (WebSocket Secure).
+- Evidence files are stored on AWS S3 in sa-east-1 (Sao Paulo,
+  Brazil).
+- The extension does NOT collect: browsing history outside of
+  captures, cookies, form data, passwords, or financial data.
+- Geolocation is only accessed via navigator.geolocation API
+  (DOM API, no manifest permission needed) and only during
+  active captures with user consent.
+
+
+SUPPORT
+-------
+Website: https://lexato.com.br
+Email:   suporte@lexato.com.br
+Privacy: https://lexato.com.br/politica-de-privacidade
+Terms:   https://lexato.com.br/termos-de-uso

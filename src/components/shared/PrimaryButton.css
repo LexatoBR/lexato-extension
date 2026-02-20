@@ -1,0 +1,150 @@
+/**
+ * Estilos do PrimaryButton
+ * Efeito de faísca na borda (Spark Border) + hover premium com seta
+ */
+
+.primary-button {
+  position: relative;
+  padding: 18px 34px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: var(--green-bright, #00DEA5);
+}
+
+/* Largura total */
+.primary-button--full {
+  width: 100%;
+}
+
+/* Fundo interno */
+.primary-button__bg {
+  position: absolute;
+  inset: 2px;
+  background: var(--bg-primary, #0F0E10);
+  border-radius: 10px;
+  z-index: 1;
+  transition: background 0.3s ease;
+}
+
+/* Fundo de hover (estilo Premium Minimal) */
+.primary-button__hover-bg {
+  position: absolute;
+  inset: 2px;
+  background: linear-gradient(135deg, rgba(0, 222, 165, 0.15) 0%, rgba(0, 179, 134, 0.1) 100%);
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.primary-button:hover:not(.primary-button--disabled) .primary-button__hover-bg {
+  opacity: 1;
+}
+
+/* Borda com gradiente */
+.primary-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(90deg, transparent, var(--green-bright, #00DEA5), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Faísca animada */
+.primary-button__spark {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--green-bright, #00DEA5);
+  border-radius: 50%;
+  filter: blur(4px);
+  animation: primary-spark-move 6s linear infinite;
+  z-index: 0;
+}
+
+@keyframes primary-spark-move {
+  0% { top: 0; left: 0; }
+  25% { top: 0; left: calc(100% - 20px); }
+  50% { top: calc(100% - 20px); left: calc(100% - 20px); }
+  75% { top: calc(100% - 20px); left: 0; }
+  100% { top: 0; left: 0; }
+}
+
+/* Texto */
+.primary-button__text {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Seta com animação de hover */
+.primary-button__arrow {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+.primary-button:hover:not(.primary-button--disabled) .primary-button__arrow {
+  transform: translateX(4px);
+}
+
+/* Hover geral */
+.primary-button:hover:not(.primary-button--disabled) {
+  transform: translateY(-1px);
+}
+
+/* Active */
+.primary-button:active:not(.primary-button--disabled) {
+  transform: translateY(0);
+}
+
+.primary-button:active:not(.primary-button--disabled) .primary-button__arrow {
+  transform: translateX(2px);
+}
+
+/* Estado desabilitado */
+.primary-button--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.primary-button--disabled .primary-button__bg {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.primary-button--disabled::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+/* Loader */
+.primary-button__loader {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top-color: var(--green-bright, #00DEA5);
+  border-radius: 50%;
+  animation: primary-button-spin 0.8s linear infinite;
+}
+
+@keyframes primary-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

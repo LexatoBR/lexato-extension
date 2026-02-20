@@ -1,0 +1,259 @@
+/**
+ * Estilos do Modal de Armazenamento - Lexato Chrome Extension
+ *
+ * Modal com glassmorfismo para seleção de tipo de armazenamento.
+ * Implementa todos os requisitos visuais 7.1-7.14.
+ *
+ * @see Requirements 7.1-7.14
+ * @see branding/tipografia/identidade_visual.md
+ */
+
+/* === OVERLAY (Requisito 7.1) === */
+.storage-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  animation: overlayFadeIn var(--transition-base) ease-out;
+}
+
+/* === MODAL CONTAINER (Requisito 7.2) === */
+.storage-modal {
+  width: 340px;
+  max-height: 480px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  animation: modalSlideIn var(--transition-slow) ease-out;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Animação de entrada do modal */
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* === HEADER DO MODAL === */
+.storage-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--space-6);
+  border-bottom: 1px solid var(--sidebar-border);
+  flex-shrink: 0;
+}
+
+.storage-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.storage-modal-subtitle {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-top: var(--space-1);
+}
+
+.storage-modal-close {
+  padding: var(--space-2);
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.storage-modal-close:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* === BODY DO MODAL === */
+.storage-modal-body {
+  padding: var(--space-4);
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* === STORAGE CARDS (Requisitos 7.3-7.6) === */
+.storage-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  text-align: left;
+  width: 100%;
+}
+
+/* === ESTADOS HOVER (Requisitos 7.7-7.10) === */
+.storage-card:hover:not(.disabled) {
+  background: rgba(0, 222, 165, 0.08);
+  border-color: rgba(0, 222, 165, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 222, 165, 0.2);
+}
+
+/* === ESTADOS ACTIVE (Requisitos 7.11-7.13) === */
+.storage-card.active {
+  background: rgba(0, 222, 165, 0.15);
+  border-color: var(--green-bright);
+  box-shadow: 0 0 0 3px rgba(0, 222, 165, 0.2);
+}
+
+/* === ESTADO DISABLED === */
+.storage-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* === RADIO INDICATOR === */
+.storage-card-radio {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--text-tertiary);
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  margin-top: 2px;
+}
+
+.storage-card.active .storage-card-radio {
+  border-color: var(--green-bright);
+  background: var(--green-bright);
+}
+
+.storage-card-radio-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--bg-primary);
+  border-radius: 50%;
+}
+
+/* === CONTEÚDO DO CARD === */
+.storage-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.storage-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.storage-card-details {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-1);
+}
+
+.storage-card-credits {
+  font-size: 12px;
+  color: var(--green-bright);
+  font-weight: 500;
+}
+
+.storage-card-insufficient {
+  color: var(--color-error);
+  font-weight: 400;
+}
+
+/* === BADGE RECOMENDADO (Requisito 7.14) === */
+.recommended-badge {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  background: linear-gradient(135deg, var(--green-bright), var(--green-mid));
+  color: var(--bg-primary);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+/* === FOOTER DO MODAL === */
+.storage-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--sidebar-border);
+  flex-shrink: 0;
+}
+
+/* === FALLBACK PARA FIREFOX === */
+@supports not (backdrop-filter: blur(10px)) {
+  .storage-modal-overlay {
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  .storage-card {
+    background: rgba(22, 21, 25, 0.95);
+  }
+}
+
+@-moz-document url-prefix() {
+  .storage-modal-overlay {
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  .storage-card {
+    background: rgba(22, 21, 25, 0.9);
+  }
+}
+
+/* === ACESSIBILIDADE: REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  .storage-modal-overlay {
+    animation: none;
+  }
+
+  .storage-modal {
+    animation: none;
+  }
+
+  .storage-card {
+    transition: none;
+  }
+
+  .storage-card:hover:not(.disabled) {
+    transform: none;
+  }
+}

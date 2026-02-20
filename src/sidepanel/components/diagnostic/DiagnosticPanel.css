@@ -1,0 +1,845 @@
+/**
+ * Estilos do Painel de Diagnóstico - Side Panel
+ *
+ * Design consistente com o sistema visual da extensão Lexato.
+ * Migrado de popup/components/DiagnosticPanel.css para o Side Panel.
+ * Layout responsivo sem dimensões fixas do popup.
+ */
+
+/* ============================================================================
+   CONTAINER PRINCIPAL
+   ============================================================================ */
+
+.diagnostic-panel {
+  padding: 0 var(--space-2) var(--space-4);
+  /* Permite que tooltips apareçam fora do container */
+  overflow: visible;
+  /* Layout responsivo para o Side Panel */
+  width: 100%;
+}
+
+/* ============================================================================
+   SCROLLBAR OCULTA (APARECE NO HOVER)
+   ============================================================================ */
+
+.diagnostic-panel {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s ease;
+}
+
+.diagnostic-panel:hover {
+  scrollbar-color: rgba(0, 222, 165, 0.3) transparent;
+}
+
+/* Webkit (Chrome, Safari, Edge) */
+.diagnostic-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.diagnostic-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.diagnostic-panel::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.diagnostic-panel:hover::-webkit-scrollbar-thumb {
+  background: rgba(0, 222, 165, 0.3);
+}
+
+.diagnostic-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 222, 165, 0.5);
+}
+
+/* ============================================================================
+   SEÇÃO DE INFORMAÇÕES (INTRO + TECH INFO COMBINADOS)
+   ============================================================================ */
+
+.diagnostic-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  padding: var(--space-4);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.diagnostic-info-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(180deg, rgba(0, 222, 165, 0.06), transparent);
+  pointer-events: none;
+}
+
+.diagnostic-info-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  position: relative;
+  z-index: 1;
+}
+
+.diagnostic-info-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 222, 165, 0.15);
+  border-radius: 10px;
+  color: var(--green-bright);
+  flex-shrink: 0;
+}
+
+.diagnostic-info-title {
+  flex: 1;
+}
+
+.diagnostic-info-title h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.diagnostic-info-title p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}
+
+.diagnostic-homologation-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.diagnostic-homologation-badge--success {
+  background: rgba(0, 222, 165, 0.15);
+  color: var(--green-bright);
+  border: 1px solid rgba(0, 222, 165, 0.3);
+}
+
+.diagnostic-homologation-badge--warning {
+  background: rgba(255, 193, 7, 0.15);
+  color: #FFC107;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+/* Grid de informações técnicas - responsivo para Side Panel */
+.diagnostic-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  position: relative;
+  z-index: 1;
+}
+
+/* Ajuste para larguras menores no Side Panel */
+@media (max-width: 479px) {
+  .diagnostic-tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.diagnostic-tech-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-2);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+.diagnostic-tech-label {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.diagnostic-tech-value {
+  font-size: 12px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ============================================================================
+   BARRA DE PROGRESSO
+   ============================================================================ */
+
+.diagnostic-progress {
+  margin-bottom: var(--space-4);
+}
+
+.diagnostic-progress__bar {
+  height: 4px;
+  background: var(--dark-700);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.diagnostic-progress__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green-bright), var(--green-medium));
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+.diagnostic-progress__text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-2);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.diagnostic-progress__current {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.diagnostic-progress__spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--dark-600);
+  border-top-color: var(--green-bright);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================================
+   CARD DE STATUS GERAL
+   ============================================================================ */
+
+.diagnostic-status-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--dark-800);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-3);
+  border: 1px solid var(--dark-700);
+}
+
+.diagnostic-status-card--healthy {
+  border-color: rgba(0, 230, 118, 0.3);
+  background: rgba(0, 230, 118, 0.05);
+}
+
+.diagnostic-status-card--warning {
+  border-color: rgba(255, 193, 7, 0.3);
+  background: rgba(255, 193, 7, 0.05);
+}
+
+.diagnostic-status-card--critical {
+  border-color: rgba(239, 83, 80, 0.3);
+  background: rgba(239, 83, 80, 0.05);
+}
+
+.diagnostic-status-card__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.diagnostic-status-card__icon--healthy {
+  background: rgba(0, 230, 118, 0.15);
+}
+
+.diagnostic-status-card__icon--warning {
+  background: rgba(255, 193, 7, 0.15);
+}
+
+.diagnostic-status-card__icon--critical {
+  background: rgba(239, 83, 80, 0.15);
+}
+
+.diagnostic-status-card__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.diagnostic-status-card__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-1);
+}
+
+.diagnostic-status-card__subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================================================
+   CONTADORES DE STATUS
+   ============================================================================ */
+
+.diagnostic-counters {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.diagnostic-counter {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--dark-800);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--dark-700);
+}
+
+.diagnostic-counter__value {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.diagnostic-counter__value--success {
+  color: var(--green-bright);
+}
+
+.diagnostic-counter__value--warning {
+  color: #FFC107;
+}
+
+.diagnostic-counter__value--error {
+  color: var(--color-error);
+}
+
+.diagnostic-counter__label {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================================================
+   LISTA DE VERIFICAÇÕES
+   ============================================================================ */
+
+.diagnostic-checks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s ease;
+}
+
+.diagnostic-checks:hover {
+  scrollbar-color: rgba(0, 222, 165, 0.3) transparent;
+}
+
+.diagnostic-checks::-webkit-scrollbar {
+  width: 4px;
+}
+
+.diagnostic-checks::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.diagnostic-checks::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+
+.diagnostic-checks:hover::-webkit-scrollbar-thumb {
+  background: rgba(0, 222, 165, 0.3);
+}
+
+.diagnostic-checks::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 222, 165, 0.5);
+}
+
+.diagnostic-checks__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  margin: 0 0 var(--space-2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.diagnostic-check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.2s ease;
+}
+
+.diagnostic-check:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.diagnostic-check--expanded {
+  border-color: rgba(0, 222, 165, 0.2);
+}
+
+.diagnostic-check__status {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.diagnostic-check__status--success {
+  background: rgba(0, 230, 118, 0.15);
+}
+
+.diagnostic-check__status--warning {
+  background: rgba(255, 193, 7, 0.15);
+}
+
+.diagnostic-check__status--error {
+  background: rgba(239, 83, 80, 0.15);
+}
+
+.diagnostic-check__status--pending {
+  background: var(--dark-700);
+}
+
+.diagnostic-check__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.diagnostic-check__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.diagnostic-check__name-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1;
+  min-width: 0;
+}
+
+.diagnostic-check__name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.diagnostic-check__info-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.diagnostic-check:hover .diagnostic-check__info-btn {
+  opacity: 1;
+}
+
+.diagnostic-check__info-btn:hover {
+  color: var(--green-bright);
+  background: rgba(0, 222, 165, 0.1);
+}
+
+.diagnostic-check__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.diagnostic-check__duration {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  padding: 2px 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.diagnostic-check__message {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: var(--space-1) 0 0;
+  line-height: 1.4;
+}
+
+.diagnostic-check__details {
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  background: var(--dark-900);
+  border-radius: var(--radius-sm);
+  font-size: 10px;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  color: var(--text-tertiary);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.diagnostic-check__actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.diagnostic-check__expand {
+  padding: var(--space-1);
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.diagnostic-check__expand:hover {
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.diagnostic-check__expand svg {
+  transition: transform 0.2s ease;
+}
+
+.diagnostic-check__expand--expanded svg {
+  transform: rotate(180deg);
+}
+
+/* ============================================================================
+   BOTÃO DE CORREÇÃO AUTOMÁTICA
+   ============================================================================ */
+
+.diagnostic-fix-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--green-bright);
+  background: rgba(0, 230, 118, 0.1);
+  border: 1px solid rgba(0, 230, 118, 0.3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.diagnostic-fix-btn:hover {
+  background: rgba(0, 230, 118, 0.2);
+  border-color: rgba(0, 230, 118, 0.5);
+}
+
+.diagnostic-fix-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================================================
+   AÇÕES DO PAINEL (BOTÕES INFERIORES)
+   ============================================================================ */
+
+.diagnostic-actions {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: visible;
+  position: relative;
+}
+
+.diagnostic-actions > .diagnostic-tooltip-wrapper:first-child {
+  flex: 1;
+}
+
+.diagnostic-actions > .diagnostic-tooltip-wrapper:first-child .diagnostic-action-btn {
+  width: 100%;
+}
+
+.diagnostic-actions .diagnostic-tooltip {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
+.diagnostic-actions .diagnostic-tooltip::after {
+  left: auto;
+  right: 16px;
+  transform: none;
+}
+
+.diagnostic-actions > .diagnostic-tooltip-wrapper:first-child .diagnostic-tooltip {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+}
+
+.diagnostic-actions > .diagnostic-tooltip-wrapper:first-child .diagnostic-tooltip::after {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+}
+
+.diagnostic-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.diagnostic-action-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.diagnostic-action-btn--primary {
+  color: var(--green-bright);
+  background: rgba(0, 222, 165, 0.1);
+  border-color: rgba(0, 222, 165, 0.2);
+}
+
+.diagnostic-action-btn--primary:hover {
+  background: rgba(0, 222, 165, 0.15);
+  border-color: rgba(0, 222, 165, 0.3);
+}
+
+.diagnostic-action-btn--icon {
+  width: 44px;
+  padding: var(--space-3);
+  flex-shrink: 0;
+}
+
+.diagnostic-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================================================
+   ESTADO VAZIO / INICIAL
+   ============================================================================ */
+
+.diagnostic-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+}
+
+.diagnostic-empty__icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 222, 165, 0.1);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-4);
+  color: var(--green-bright);
+}
+
+.diagnostic-empty__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2);
+}
+
+.diagnostic-empty__description {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-4);
+  max-width: 280px;
+}
+
+/* ============================================================================
+   TOAST DE FEEDBACK
+   ============================================================================ */
+
+.diagnostic-toast {
+  position: fixed;
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--space-3) var(--space-4);
+  background: var(--dark-700);
+  border: 1px solid var(--dark-600);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--text-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  animation: slideUp 0.3s ease;
+}
+
+.diagnostic-toast--success {
+  border-color: rgba(0, 230, 118, 0.5);
+}
+
+.diagnostic-toast--error {
+  border-color: rgba(239, 83, 80, 0.5);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ============================================================================
+   TOOLTIP
+   ============================================================================ */
+
+.diagnostic-tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.diagnostic-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 14px;
+  background: rgba(15, 14, 16, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  white-space: normal;
+  width: max-content;
+  max-width: 240px;
+  z-index: 1000;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 222, 165, 0.1);
+  animation: tooltipFadeIn 0.2s ease;
+}
+
+.diagnostic-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: rgba(15, 14, 16, 0.95);
+}
+
+.diagnostic-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--green-bright), transparent);
+  border-radius: 10px 10px 0 0;
+  opacity: 0.5;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ============================================================================
+   ANIMAÇÃO DE SPIN PARA ÍCONE DE LOADING
+   ============================================================================ */
+
+.diagnostic-spin-icon {
+  animation: diagnosticSpin 1.5s linear infinite;
+}
+
+@keyframes diagnosticSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,81 @@
+Lexato - Digital Evidence Registry
+
+Capture and certify digital evidence with legal validity using blockchain and advanced cryptography. Lexato is the professional tool for lawyers, forensic experts, investigators, and anyone who needs to preserve digital evidence securely and with legal validity.
+
+
+WHAT IS LEXATO?
+
+Lexato is a digital evidence capture and certification platform that transforms any online content into legally valid evidence. Through cutting-edge cryptography, blockchain technology, and compliance with international standards, Lexato ensures your captures are admissible in legal proceedings.
+
+Lexato's differentiator is its complete digital chain of custody: each captured piece of evidence receives a SHA-256 cryptographic hash, is organized into a Merkle Tree, and is certified on public blockchain networks (Polygon, Arbitrum, or Optimism), creating an immutable and verifiable record of the evidence's existence at a specific point in time.
+
+
+KEY FEATURES
+
+- Screenshot capture with complete forensic metadata
+  Capture any web page with automatic recording of URL, title, timestamp, IP, geolocation, reverse DNS, WHOIS, and Wayback Machine record.
+
+- Video recording with forensic browsing log
+  Record your browsing session on video with a complete log of all pages visited during the recording, creating a detailed forensic log.
+
+- Blockchain certification
+  Each piece of evidence is certified on public blockchain networks (Polygon, Arbitrum, or Optimism), ensuring an immutable and verifiable record.
+
+- SHA-256 hashing and Merkle Tree
+  Advanced cryptographic technology to guarantee the integrity of each captured piece of evidence. Any modification to the file invalidates the hash.
+
+- Digital evidence reports
+  Generate complete PDF certificates with all forensic metadata, hash, cryptographic signature, and verification code.
+
+- Side panel recording controls
+  Video recording controls outside the captured area, allowing free browsing without interfering with the video.
+
+
+USE CASES
+
+- Evidence for legal proceedings: Capture and preserve evidence from social media posts, websites, emails, and messages for use in lawsuits.
+
+- Online content documentation: Document content that may be removed or altered, such as defamatory posts, fake news, or copyright violations.
+
+- Digital infringement documentation: Record evidence of online fraud, phishing, scams, cyberbullying, and other digital infractions.
+
+- Evidence preservation: Preserve web pages, documents, and digital content before they are modified or deleted.
+
+- Compliance and auditing: Document digital processes and procedures for regulatory compliance and auditing purposes.
+
+
+SECURITY AND COMPLIANCE
+
+- ISO/IEC 27037 compliance: International standard for identification, collection, acquisition, and preservation of digital evidence.
+
+- LGPD compliance: Personal data processing in compliance with Brazil's General Data Protection Law (Law 13,709/2018).
+
+- Data stored in Brazil: All evidence files are stored on AWS servers in the sa-east-1 region (Sao Paulo, Brazil).
+
+- Explicit consent: The extension only collects data when the user explicitly initiates a capture. No data is collected in the background.
+
+- Encryption in transit: All communications use HTTPS/TLS and WebSocket Secure (WSS).
+
+- We do not collect: browsing history outside of captures, cookies, form data, passwords, or financial data.
+
+
+PERMISSIONS
+
+Lexato requests permissions necessary for digital evidence capture functionality. Each permission is used exclusively for its specific purpose:
+
+- Web page access: Required to capture screenshots on any website. Activated only when you initiate a capture.
+- Local storage: To maintain your settings and authentication session.
+- Optional permissions: Geolocation, notifications, and extension management are requested only when needed and can be declined.
+
+For complete details on each permission, see our Privacy Policy at https://lexato.com.br/privacy-policy
+
+
+SUPPORTED LANGUAGES
+
+Portuguese (Brazil), English, Spanish
+
+
+SUPPORT
+
+Website: https://lexato.com.br
+Email: suporte@lexato.com.br

@@ -1,0 +1,386 @@
+/**
+ * Layout CSS - Extensão Chrome Lexato
+ * 
+ * Define o layout principal da extensão com dimensões 520×600px.
+ * LIMITE CHROME: máximo 800x600px para popups de extensão.
+ * Inclui sidebar (70px), header (64px) e área de conteúdo com scroll.
+ * 
+ * @see Requirements 7.1-7.5 (Layout da Extensão)
+ * @see Design Document - Seção 6: Layout da Extensão
+ * @see https://stackoverflow.com/questions/8983165
+ */
+
+/* === LAYOUT DO SIDE PANEL UNIFICADO === */
+
+/**
+ * Container raiz do Side Panel unificado
+ * Layout responsivo: min-width 360px, height 100%
+ * Substitui as dimensões fixas do popup (580x600)
+ * Gradiente de fundo: from-[#0F0E10] via-[#121215] to-[#161519]
+ *
+ * @see Requirements 3.1, 3.2, 3.5
+ */
+.sidepanel-root {
+  width: 100%;
+  min-width: 360px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #0F0E10 0%, #121215 50%, #161519 100%);
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* === RESPONSIVO - Breakpoint 480px (coluna única vs. layout expandido) === */
+
+/**
+ * Abaixo de 480px: layout em coluna única, compacto
+ * Acima de 480px: aproveita espaço horizontal para elementos lado a lado
+ *
+ * @see Requirements 3.3, 3.4
+ */
+@media (max-width: 479px) {
+  .sidepanel-root {
+    /* Coluna única: padding reduzido para maximizar espaço */
+    --sidepanel-layout: column;
+  }
+
+  .sidepanel-root .extension-content-no-tabs {
+    padding: var(--space-3);
+  }
+}
+
+@media (min-width: 480px) {
+  .sidepanel-root {
+    /* Layout expandido: pode usar elementos lado a lado */
+    --sidepanel-layout: expanded;
+  }
+
+  .sidepanel-root .extension-content-no-tabs {
+    padding: var(--space-4) var(--space-6);
+  }
+}
+
+/* === LAYOUT PRINCIPAL (POPUP - LEGADO) === */
+
+/**
+ * Container raiz da extensão (popup)
+ * Dimensões: 580px × 600px (limite Chrome: máx 800x600)
+ * Gradiente de fundo: from-[#0F0E10] via-[#121215] to-[#161519]
+ * @see https://stackoverflow.com/questions/8983165
+ */
+.extension-root {
+  width: 580px;
+  height: 600px;
+  display: flex;
+  background: linear-gradient(180deg, #0F0E10 0%, #121215 50%, #161519 100%);
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+/**
+ * Container raiz com layout de abas horizontais (sem sidebar)
+ */
+.extension-root-tabs {
+  flex-direction: column;
+}
+
+/**
+ * Radial glow de fundo - efeito visual premium
+ * Animação pulse-glow para efeito pulsante sutil
+ */
+.extension-glow {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 222, 165, 0.12) 0%,
+    transparent 70%
+  );
+  filter: blur(48px);
+  pointer-events: none;
+  animation: pulse-glow 4s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* === SIDEBAR === */
+
+/**
+ * Sidebar de navegação
+ * Largura: 70px | Posição: fixa à esquerda
+ * z-index: 100 para ficar acima do conteúdo mas abaixo dos modais (99999)
+ */
+.extension-sidebar {
+  width: 70px;
+  height: 100%;
+  flex-shrink: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.03);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* === ÁREA PRINCIPAL === */
+
+/**
+ * Container principal (ao lado da sidebar)
+ * Flex: 1 para ocupar espaço restante
+ * z-index: 1 para ficar abaixo da sidebar e header
+ */
+.extension-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  z-index: 1;
+}
+
+/* === HEADER === */
+
+/**
+ * Header da extensão
+ * Altura: 64px | Backdrop blur para efeito glass
+ * z-index: 100 para ficar acima do conteúdo mas abaixo dos modais (99999)
+ */
+.extension-header {
+  height: 64px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 var(--space-4);
+  background: transparent;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 100;
+  position: relative;
+}
+
+/**
+ * Header para layout com abas (full-width)
+ */
+.extension-header-tabs {
+  width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  background: transparent;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 100;
+  position: relative;
+  overflow: visible;
+}
+
+/**
+ * Container das abas horizontais
+ */
+.extension-tabs {
+  flex-shrink: 0;
+  z-index: 100;
+  position: relative;
+}
+
+/**
+ * Área de conteúdo para layout com abas
+ */
+.extension-content-tabs {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-4);
+  position: relative;
+  z-index: 1;
+}
+
+/**
+ * Área de conteúdo para layout sem abas (apenas header)
+ * Mais espaço vertical disponível
+ */
+.extension-content-no-tabs {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-4);
+  position: relative;
+  z-index: 1;
+}
+
+/* === ÁREA DE CONTEÚDO === */
+
+/**
+ * Área de conteúdo com scroll vertical
+ * Padding: 16px | Scroll customizado
+ * z-index: 1 para ficar abaixo dos modais do header e sidebar
+ */
+.extension-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-4);
+  position: relative;
+  z-index: 1;
+}
+
+/* === FOOTER (quando aplicável) === */
+
+/**
+ * Footer da extensão
+ * Usado para botões de ação principal
+ */
+.extension-footer {
+  flex-shrink: 0;
+  padding: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* === SCROLLBAR CUSTOMIZADA === */
+
+/**
+ * Scrollbar estilizada para dark mode
+ * Largura: 6px | Cor: rgba branco com opacidade
+ */
+.extension-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.extension-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.extension-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.extension-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Scrollbar para layout com abas */
+.extension-content-tabs::-webkit-scrollbar,
+.extension-content-no-tabs::-webkit-scrollbar {
+  width: 6px;
+}
+
+.extension-content-tabs::-webkit-scrollbar-track,
+.extension-content-no-tabs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.extension-content-tabs::-webkit-scrollbar-thumb,
+.extension-content-no-tabs::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.extension-content-tabs::-webkit-scrollbar-thumb:hover,
+.extension-content-no-tabs::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* === ANIMAÇÃO PULSE GLOW === */
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+/* === INDICADORES DE SCROLL COM GRADIENTE === */
+
+/**
+ * Gradiente fade no topo quando há conteúdo acima
+ */
+.scroll-indicator-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: linear-gradient(to bottom, #0F0E10, transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  z-index: 5;
+}
+
+.scroll-indicator-top.visible {
+  opacity: 1;
+}
+
+/**
+ * Gradiente fade na base quando há conteúdo abaixo
+ */
+.scroll-indicator-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: linear-gradient(to top, #0F0E10, transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  z-index: 5;
+}
+
+.scroll-indicator-bottom.visible {
+  opacity: 1;
+}
+
+/* === UTILITÁRIOS DE LAYOUT === */
+
+/**
+ * Container com scroll e indicadores de gradiente
+ */
+.scroll-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-container-inner {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/**
+ * Área de conteúdo centralizada
+ */
+.content-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/**
+ * Espaçamento entre seções
+ */
+.section-gap {
+  margin-bottom: var(--space-6);
+}
+
+.section-gap-sm {
+  margin-bottom: var(--space-4);
+}
+
+.section-gap-lg {
+  margin-bottom: var(--space-8);
+}

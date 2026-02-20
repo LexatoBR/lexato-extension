@@ -1,0 +1,81 @@
+Lexato - Registro de Provas Digitais
+
+Capture e certifique provas digitais com validade juridica usando blockchain e criptografia avancada. O Lexato e a ferramenta profissional para advogados, peritos, investigadores e qualquer pessoa que precise preservar evidencias digitais de forma segura e legalmente valida.
+
+
+O QUE E O LEXATO?
+
+O Lexato e uma plataforma de captura e certificacao de provas digitais que transforma qualquer conteudo online em evidencia com validade juridica. Atraves de tecnologia de ponta em criptografia, blockchain e conformidade com normas internacionais, o Lexato garante que suas capturas sejam admissiveis em processos judiciais.
+
+O diferencial do Lexato esta na cadeia de custodia digital completa: cada prova capturada recebe um hash criptografico SHA-256, e organizada em uma Merkle Tree e certificada em redes blockchain publicas (Polygon, Arbitrum ou Optimism), criando um registro imutavel e verificavel da existencia da prova em determinado momento.
+
+
+FUNCIONALIDADES PRINCIPAIS
+
+- Captura de screenshots com metadados forenses completos
+  Capture qualquer pagina web com registro automatico de URL, titulo, timestamp, IP, geolocalizacao, DNS reverso, WHOIS e registro do Wayback Machine.
+
+- Gravacao de video com log de navegacao forense
+  Grave sua navegacao em video com registro completo de todas as paginas visitadas durante a gravacao, criando um log forense detalhado.
+
+- Certificacao via blockchain
+  Cada evidencia e certificada em redes blockchain publicas (Polygon, Arbitrum ou Optimism), garantindo um registro imutavel e verificavel.
+
+- Hash SHA-256 e Merkle Tree
+  Tecnologia criptografica avancada para garantir a integridade de cada evidencia capturada. Qualquer alteracao no arquivo invalida o hash.
+
+- Relatorios de prova digital
+  Gere certificados PDF completos com todos os metadados forenses, hash, assinatura criptografica e codigo de verificacao.
+
+- Painel lateral de gravacao
+  Controles de gravacao de video fora da area capturada, permitindo navegacao livre sem interferir no video.
+
+
+CASOS DE USO
+
+- Provas para processos judiciais: Capture e preserve evidencias de publicacoes em redes sociais, sites, e-mails e mensagens para uso em acoes judiciais.
+
+- Registro de conteudo online: Documente conteudo que pode ser removido ou alterado, como publicacoes difamatorias, fake news ou violacoes de direitos autorais.
+
+- Documentacao de infracoes digitais: Registre evidencias de fraudes online, phishing, golpes, cyberbullying e outras infracoes digitais.
+
+- Preservacao de evidencias: Preserve paginas web, documentos e conteudos digitais antes que sejam modificados ou excluidos.
+
+- Compliance e auditoria: Documente processos e procedimentos digitais para fins de conformidade regulatoria e auditoria.
+
+
+SEGURANCA E CONFORMIDADE
+
+- Conformidade com ISO/IEC 27037: Norma internacional para identificacao, coleta, aquisicao e preservacao de evidencias digitais.
+
+- Conformidade com a LGPD: Tratamento de dados pessoais em conformidade com a Lei Geral de Protecao de Dados (Lei 13.709/2018).
+
+- Dados armazenados no Brasil: Todos os arquivos de evidencias sao armazenados em servidores AWS na regiao sa-east-1 (Sao Paulo, Brasil).
+
+- Consentimento explicito: A extensao so coleta dados quando o usuario inicia explicitamente uma captura. Nenhum dado e coletado em segundo plano.
+
+- Criptografia em transito: Todas as comunicacoes utilizam HTTPS/TLS e WebSocket Secure (WSS).
+
+- Nao coletamos: historico de navegacao fora de capturas, cookies, dados de formularios, senhas ou dados financeiros.
+
+
+PERMISSOES
+
+O Lexato solicita permissoes necessarias para o funcionamento da captura de provas digitais. Cada permissao e utilizada exclusivamente para sua finalidade especifica:
+
+- Acesso a paginas web: Necessario para capturar screenshots em qualquer site. Ativado apenas quando voce inicia uma captura.
+- Armazenamento local: Para manter suas configuracoes e sessao de autenticacao.
+- Permissoes opcionais: Geolocalizacao, notificacoes e gerenciamento de extensoes sao solicitados apenas quando necessarios e podem ser recusados.
+
+Para detalhes completos sobre cada permissao, consulte nossa Politica de Privacidade em https://lexato.com.br/politica-de-privacidade
+
+
+IDIOMAS SUPORTADOS
+
+Portugues (Brasil), Ingles, Espanhol
+
+
+SUPORTE
+
+Site: https://lexato.com.br
+E-mail: suporte@lexato.com.br
