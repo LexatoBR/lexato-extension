@@ -7,7 +7,7 @@
 <h1 align="center">Lexato — Captura de Provas Digitais</h1>
 
 <p align="center">
-  A primeira e única ferramenta de captura de provas digitais <strong>open source</strong> do Brasil.<br/>
+  A primeira e única ferramenta de captura de provas digitais 100% Open Source do Brasil.<br/>
   Código aberto, auditável e verificável por qualquer pessoa.
 </p>
 
@@ -17,14 +17,14 @@
   <a href="https://chromewebstore.google.com"><img src="https://img.shields.io/badge/Chrome%20Web%20Store-disponível-blue" alt="Chrome Web Store" /></a>
   <a href="https://developer.chrome.com/docs/extensions/mv3/"><img src="https://img.shields.io/badge/Manifest-V3-blue" alt="Manifest V3" /></a>
   <a href="SECURITY.md"><img src="https://img.shields.io/badge/Zero%20Trust-architecture-green" alt="Zero Trust" /></a>
-  <a href="https://github.com/LexatoBR/lexato-extension"><img src="https://img.shields.io/badge/open--source-100%25-brightgreen" alt="Open Source" /></a>
+  <a href="https://github.com/LexatoBR/lexato-extension"><img src="https://img.shields.io/badge/Open%20Source-100%25-brightgreen" alt="Open Source" /></a>
 </p>
 
 ---
 
 ## Sumário
 
-- [Por que open source?](#por-que-open-source)
+- [Por que Open Source?](#por-que-open-source)
 - [O que é a Lexato?](#o-que-é-a-lexato)
 - [Recursos exclusivos](#recursos-exclusivos)
 - [Como funciona](#como-funciona)
@@ -38,66 +38,71 @@
 
 ---
 
-## Por que open source?
+## Por que Open Source?
 
-Uma prova digital só tem valor se o processo de coleta for confiável. E confiança, no contexto forense, exige verificabilidade.
+No universo forense, uma prova digital só tem valor real quando o processo de coleta pode ser verificado de ponta a ponta. Não basta afirmar que o sistema é seguro — é preciso demonstrar. E a única forma de demonstrar é abrindo o código.
 
-A [Lexato](https://lexato.com.br) publica o código-fonte completo da ferramenta de captura para que qualquer pessoa — advogados, peritos, pesquisadores de segurança, juízes — possa inspecionar exatamente o que acontece no momento da coleta:
+A [Lexato](https://lexato.com.br) tomou uma decisão que nenhuma outra empresa do setor no Brasil tomou: publicar integralmente o código-fonte da ferramenta de captura. Isso significa que advogados, peritos judiciais, pesquisadores de segurança e magistrados podem inspecionar cada linha de código e entender exatamente o que acontece no momento em que uma evidência é coletada.
 
-- Como os hashes SHA-256 são gerados e encadeados
-- Como a árvore Merkle é construída para garantir integridade individual de cada artefato
-- Como o modo lockdown protege a captura contra manipulação (DevTools, outras ferramentas do navegador)
-- Como os metadados forenses são coletados (DNS, WHOIS, geolocalização, headers HTTP, certificados SSL)
-- Como a comunicação com o backend é autenticada e protegida
+Ao examinar este repositório, qualquer pessoa pode verificar:
 
-Nenhuma outra ferramenta de captura de provas digitais no Brasil oferece esse nível de transparência. Soluções proprietárias pedem que você confie cegamente — a Lexato pede que você verifique.
+- Como os hashes SHA-256 são gerados e encadeados para formar a cadeia de custódia digital
+- Como a árvore Merkle é construída, garantindo que cada artefato possa ser validado individualmente
+- Como o modo lockdown isola o navegador durante a captura, impedindo qualquer interferência externa
+- Como os metadados forenses — DNS, WHOIS, geolocalização, headers HTTP, certificados SSL — são coletados de forma automatizada
+- Como toda comunicação com o backend é autenticada e protegida por criptografia
+
+Soluções proprietárias pedem que você confie cegamente no que acontece por trás de uma interface fechada. A Lexato pede que você verifique por conta própria. Essa é a diferença entre confiança declarada e confiança verificável.
 
 ---
 
 ## O que é a Lexato?
 
-A [Lexato](https://lexato.com.br) é uma plataforma brasileira de certificação de provas digitais com validade jurídica, projetada para advogados, escritórios de advocacia, departamentos jurídicos e profissionais que precisam de evidências digitais confiáveis e admissíveis em juízo.
+A [Lexato](https://lexato.com.br) é uma plataforma brasileira de certificação de provas digitais com validade jurídica. Projetada para advogados, escritórios de advocacia, departamentos jurídicos e profissionais que lidam com evidências digitais no dia a dia, a plataforma resolve um problema concreto: garantir que uma captura de tela ou gravação de vídeo tenha força probatória em juízo.
 
-A plataforma combina três pilares de certificação:
+Para alcançar esse objetivo, a Lexato combina três pilares de certificação que, juntos, tornam a evidência praticamente incontestável:
 
-| Pilar | Tecnologia | Finalidade |
-|-------|------------|------------|
-| **Blockchain** | Polygon, Arbitrum, Optimism | Registro imutável e descentralizado em 3 redes simultâneas |
-| **ICP-Brasil** | Autoridade Certificadora credenciada | Carimbo de tempo com validade jurídica no Brasil |
-| **Armazenamento WORM** | AWS S3 Object Lock | Evidências que não podem ser alteradas ou excluídas |
+| Pilar | Tecnologia | O que garante |
+|-------|------------|---------------|
+| **Blockchain** | Polygon, Arbitrum, Optimism | Registro imutável e descentralizado em 3 redes simultâneas — se uma rede falhar, as outras duas mantêm a prova |
+| **ICP-Brasil** | Autoridade Certificadora credenciada | Carimbo de tempo com validade jurídica reconhecida pelo Poder Judiciário brasileiro |
+| **Armazenamento WORM** | AWS S3 Object Lock | Evidências gravadas uma única vez e que não podem ser alteradas nem excluídas — nem pela própria Lexato |
 
-Esta ferramenta é o ponto de entrada — captura a evidência diretamente no navegador com coleta forense automatizada. O processamento continua no backend da [Lexato](https://lexato.com.br) com certificação blockchain, carimbo ICP-Brasil e armazenamento imutável.
+Esta ferramenta é o ponto de entrada de todo o processo. Ela captura a evidência diretamente no navegador, coleta metadados forenses de forma automatizada e envia tudo ao backend da [Lexato](https://lexato.com.br), onde a certificação blockchain, o carimbo ICP-Brasil e o armazenamento imutável completam a cadeia de custódia.
 
-Saiba mais em **[lexato.com.br](https://lexato.com.br)**.
+Conheça a plataforma completa em **[lexato.com.br](https://lexato.com.br)**.
 
 ---
 
 ## Recursos exclusivos
 
-Tecnologias e funcionalidades únicas no mercado de certificação digital brasileiro:
+A Lexato reúne tecnologias e funcionalidades que não existem em nenhuma outra ferramenta de certificação digital no mercado brasileiro. Cada recurso foi escolhido para resolver um problema real do processo de coleta e preservação de provas:
 
-| | Recurso | Descrição |
-|---|---------|-----------|
-| **Zero Trust** | Arquitetura de segurança | Nenhum componente confia implicitamente em outro — verificação contínua em cada etapa |
-| **3 Blockchains** | Redundância descentralizada | Registro simultâneo em Polygon, Arbitrum e Optimism |
-| **100% Open Source** | Transparência total | A única ferramenta de captura de provas digitais do Brasil com código aberto |
-| **ML-DSA-87** | Criptografia pós-quântica | Assinatura digital resistente a computação quântica (FIPS 204) |
-| **AES-256-GCM** | Criptografia FIPS 140-3 | Padrão federal americano para armazenamento seguro |
-| **S3 Object Lock** | Armazenamento WORM | Write Once Read Many — evidências imutáveis após gravação |
-| **Suporte 24/7** | Atendimento contínuo | Questões técnicas e jurídicas via [lexato.com.br/suporte](https://lexato.com.br/suporte) |
+| | Recurso | Por que importa |
+|---|---------|-----------------|
+| **Zero Trust** | Arquitetura de segurança | Nenhum componente confia implicitamente em outro. Cada requisição é autenticada, cada hash é recalculado, cada artefato é validado antes de avançar na cadeia de custódia. |
+| **3 Blockchains** | Redundância descentralizada | O registro simultâneo em Polygon, Arbitrum e Optimism elimina o risco de ponto único de falha. Mesmo que uma rede inteira saia do ar, a prova permanece certificada nas outras duas. |
+| **100% Open Source** | Transparência verificável | A Lexato é a única ferramenta de captura de provas digitais do Brasil com código-fonte integralmente aberto. Qualquer pessoa pode auditar, compilar e verificar o comportamento do sistema. |
+| **ML-DSA-87** | Criptografia pós-quântica | Assinatura digital baseada no padrão FIPS 204, resistente a ataques de computação quântica. Provas assinadas hoje continuarão válidas mesmo quando computadores quânticos se tornarem viáveis. |
+| **AES-256-GCM** | Criptografia FIPS 140-3 | Padrão federal americano para proteção de dados sensíveis. Tokens e credenciais armazenados localmente são criptografados com o mesmo nível de segurança exigido por agências governamentais. |
+| **S3 Object Lock** | Armazenamento WORM | Write Once, Read Many — uma vez gravada, a evidência não pode ser alterada nem excluída por ninguém, nem mesmo pela equipe da Lexato. Imutabilidade garantida por infraestrutura. |
+| **Suporte 24/7** | Atendimento contínuo | Questões técnicas e jurídicas atendidas a qualquer hora via [lexato.com.br/suporte](https://lexato.com.br/suporte). |
 
-### Funcionalidades
 
-- **Captura de screenshot e vídeo** com hash criptográfico SHA-256 gerado no momento da coleta
-- **Metadados forenses automatizados** — IP, geolocalização, DNS, WHOIS, cabeçalhos HTTP, certificados SSL
-- **Modo lockdown** — desativa DevTools e ferramentas de terceiros durante a captura para garantir autenticidade
-- **Isolamento do navegador** — desativa temporariamente todas as outras ferramentas do Chrome durante a gravação
-- **Árvore Merkle** — estrutura criptográfica que garante integridade de cada artefato individualmente
-- **Cadeia de custódia digital** — rastreabilidade completa desde a captura até a certificação final
-- **Certificação blockchain** automática após a captura (Polygon + Arbitrum + Optimism)
-- **Carimbo de tempo ICP-Brasil** — validade jurídica via Autoridade Certificadora credenciada
+### O que a ferramenta faz na prática
+
+Durante uma captura, o sistema executa automaticamente uma série de operações forenses que seriam impossíveis de realizar manualmente:
+
+- **Captura de screenshot e vídeo** com hash criptográfico SHA-256 gerado no instante exato da coleta
+- **Coleta forense automatizada** — IP de origem, geolocalização, registros DNS, WHOIS, cabeçalhos HTTP e certificados SSL da página capturada
+- **Modo lockdown** — desativa DevTools e ferramentas de terceiros durante a captura, eliminando qualquer possibilidade de manipulação
+- **Isolamento do navegador** — desativa temporariamente todas as outras ferramentas do Chrome durante a gravação de vídeo
+- **Árvore Merkle** — estrutura criptográfica que permite verificar a integridade de cada artefato individualmente, sem precisar revalidar o conjunto inteiro
+- **Cadeia de custódia digital** — rastreabilidade completa desde o clique de captura até a certificação final em blockchain
+- **Certificação blockchain** automática em três redes simultâneas (Polygon, Arbitrum e Optimism)
+- **Carimbo de tempo ICP-Brasil** — validade jurídica emitida por Autoridade Certificadora credenciada
 - **Sincronização em tempo real** com o painel [Lexato](https://lexato.com.br) via Supabase Realtime
-- **Histórico de capturas** acessível diretamente do Side Panel
+- **Histórico de capturas** acessível diretamente pelo Side Panel do Chrome
 - **Internacionalização** — interface disponível em português, inglês e espanhol
 
 ---
@@ -105,6 +110,8 @@ Tecnologias e funcionalidades únicas no mercado de certificação digital brasi
 ## Como funciona
 
 ### Fluxo de captura
+
+O diagrama abaixo mostra o caminho completo de uma evidência, desde o momento em que o usuário clica em "Capturar" até a certificação final em blockchain:
 
 ```mermaid
 sequenceDiagram
@@ -138,6 +145,8 @@ sequenceDiagram
 
 ### Cadeia de custódia
 
+Cada etapa da cadeia de custódia é verificável e auditável. O artefato nunca é modificado após a captura — apenas novos registros de certificação são adicionados:
+
 ```mermaid
 graph LR
     A["Captura no navegador"] --> B["Hash SHA-256<br/>de cada artefato"]
@@ -150,6 +159,8 @@ graph LR
 ```
 
 ### Arquitetura
+
+A ferramenta segue a arquitetura Manifest V3 do Chrome, com Service Worker isolado como ponto central de comunicação:
 
 ```mermaid
 graph TD
@@ -175,33 +186,36 @@ graph TD
 
 ## Segurança: Zero Trust
 
-A [Lexato](https://lexato.com.br) adota uma arquitetura **Zero Trust** — nenhum componente confia implicitamente em outro. Cada operação é verificada, cada artefato é validado, cada comunicação é autenticada.
+A [Lexato](https://lexato.com.br) foi construída sobre o princípio de que nenhum componente do sistema deve confiar em outro sem verificação. Essa abordagem, conhecida como Zero Trust, permeia toda a arquitetura — do navegador ao armazenamento final.
+
+Na prática, isso significa que um token válido não é suficiente para completar uma operação. Cada etapa da cadeia de custódia recalcula hashes, revalida permissões e verifica a integridade dos artefatos antes de prosseguir. Se qualquer verificação falhar, a operação é interrompida.
 
 ### Princípios
 
-| Princípio | Como aplicamos |
-|-----------|----------------|
-| **Nunca confiar, sempre verificar** | Tokens JWT validados em cada requisição; hashes recalculados em cada etapa da cadeia de custódia |
-| **Menor privilégio** | Permissões declaradas no manifest são as mínimas necessárias; `activeTab` em vez de `<all_urls>` |
-| **Verificação contínua** | Integridade do DOM monitorada durante toda a captura via `MutationObserver`; DevTools detectados em tempo real |
-| **Criptografia em trânsito e em repouso** | HTTPS obrigatório; AES-256-GCM (FIPS 140-3) para armazenamento local |
-| **Isolamento de contexto** | Service Worker isolado (Manifest V3); ferramentas de terceiros desativadas durante captura |
-| **Auditabilidade total** | Código 100% aberto; logs de auditoria com correlation ID em cada operação |
+| Princípio | Como a Lexato aplica |
+|-----------|----------------------|
+| **Nunca confiar, sempre verificar** | Tokens JWT validados em cada requisição. Hashes recalculados em cada etapa da cadeia de custódia. |
+| **Menor privilégio** | Permissões declaradas no manifest são as mínimas necessárias. `activeTab` em vez de `<all_urls>`. |
+| **Verificação contínua** | Integridade do DOM monitorada durante toda a captura via `MutationObserver`. DevTools detectados em tempo real. |
+| **Criptografia em trânsito e em repouso** | HTTPS obrigatório para toda comunicação. AES-256-GCM (FIPS 140-3) para armazenamento local. |
+| **Isolamento de contexto** | Service Worker isolado conforme Manifest V3. Ferramentas de terceiros desativadas durante captura. |
+| **Auditabilidade total** | Código 100% Open Source. Logs de auditoria com correlation ID em cada operação. |
 
 ### Transparência
 
-- **Código aberto e auditável** — qualquer pesquisador de segurança pode inspecionar o código-fonte completo
-- **Auditorias independentes** — qualquer pessoa pode auditar, testar e validar o comportamento do sistema
-- **Sem telemetria oculta** — nenhum dado é coletado sem consentimento explícito do usuário
-- **Changelog público** — todas as alterações são rastreáveis via histórico de commits
+A decisão de publicar o código-fonte não foi um gesto simbólico. A Lexato acredita que transparência é um requisito técnico para qualquer sistema que lida com provas judiciais. Código fechado é, por definição, inverificável — e evidências produzidas por sistemas inverificáveis são vulneráveis a contestação.
+
+Com o código aberto, qualquer pesquisador de segurança pode auditar o comportamento do sistema, identificar vulnerabilidades e propor correções. Todas as alterações são rastreáveis pelo histórico de commits, e nenhum dado é coletado sem consentimento explícito do usuário.
 
 ### Privacidade
 
-- **Dados do usuário nunca saem do dispositivo** sem ação explícita de captura
-- **Geolocalização apenas com consentimento** — solicitada antes de cada captura, nunca em background
-- **Sem cookies de rastreamento** — autenticação via tokens JWT armazenados localmente com criptografia
-- **Sem acesso a histórico de navegação** — o sistema só interage com a aba ativa no momento da captura
-- **Conformidade com LGPD** — dados pessoais tratados conforme a Lei Geral de Proteção de Dados
+A Lexato coleta apenas o que é estritamente necessário para a certificação da prova. Fora do momento da captura, a ferramenta não monitora, não rastreia e não acessa dados do navegador:
+
+- Dados do usuário nunca saem do dispositivo sem ação explícita de captura
+- Geolocalização é solicitada antes de cada captura e nunca coletada em segundo plano
+- Autenticação via tokens JWT armazenados localmente com criptografia — sem cookies de rastreamento
+- A ferramenta só interage com a aba ativa no momento da captura — sem acesso a histórico de navegação
+- Conformidade integral com a LGPD (Lei Geral de Proteção de Dados)
 
 ### Conformidade
 
@@ -226,15 +240,17 @@ A [Lexato](https://lexato.com.br) adota uma arquitetura **Zero Trust** — nenhu
 
 </details>
 
-Para reportar vulnerabilidades, veja [SECURITY.md](SECURITY.md).
+Para reportar vulnerabilidades, consulte [SECURITY.md](SECURITY.md).
 
 ---
 
 ## Comparativo
 
+A tabela abaixo compara a Lexato com as soluções proprietárias disponíveis no mercado brasileiro de certificação digital. Os dados refletem funcionalidades publicamente documentadas:
+
 | Característica | Lexato | Soluções proprietárias |
 |----------------|--------|------------------------|
-| Código-fonte aberto | 100% auditável | Fechado |
+| Código-fonte | 100% Open Source e auditável | Fechado |
 | Arquitetura Zero Trust | Verificação contínua em cada etapa | Não documentado |
 | Auditoria independente | Qualquer pessoa pode auditar | Indisponível |
 | Blockchain | 3 redes simultâneas (Polygon + Arbitrum + Optimism) | 1 rede ou nenhuma |
@@ -242,7 +258,7 @@ Para reportar vulnerabilidades, veja [SECURITY.md](SECURITY.md).
 | Armazenamento imutável | S3 Object Lock (WORM) | Variável |
 | Carimbo ICP-Brasil | Sim | Variável |
 | Coleta forense | DNS, WHOIS, geolocalização, SSL, HTTP headers | Parcial |
-| Modo lockdown | DevTools + ferramentas de terceiros desativados | Indisponível |
+| Modo lockdown | DevTools e ferramentas de terceiros desativados | Indisponível |
 | Privacidade (LGPD) | Sem telemetria oculta; geolocalização com consentimento | Variável |
 | Internacionalização | pt-BR, en, es | Geralmente 1 idioma |
 
@@ -337,21 +353,15 @@ tests/
 
 ## Contribuindo
 
-Contribuições são bem-vindas. Veja [CONTRIBUTING.md](CONTRIBUTING.md) para o guia completo.
+Contribuições são bem-vindas. Consulte [CONTRIBUTING.md](CONTRIBUTING.md) para o guia completo.
 
-A [Lexato](https://lexato.com.br) valoriza especialmente:
-
-- **Auditorias de segurança** — revisão independente do código criptográfico
-- **Testes de propriedade** — validação de invariantes em hashing, Merkle tree e cadeia de custódia
-- **Coleta forense** — novos collectors para metadados adicionais
-- **Internacionalização** — traduções para novos idiomas
-- **Documentação** — guias técnicos e jurídicos sobre o processo de certificação
+A [Lexato](https://lexato.com.br) valoriza especialmente contribuições em auditorias de segurança, testes de propriedade para invariantes criptográficas, novos collectors forenses, traduções para outros idiomas e documentação técnica e jurídica sobre o processo de certificação.
 
 ---
 
 ## Licença
 
-Apache 2.0 — veja [LICENSE](LICENSE) para detalhes.
+Apache 2.0 — consulte [LICENSE](LICENSE) para detalhes.
 
 Copyright (c) 2024-2026 [Lexato](https://lexato.com.br). Todos os direitos reservados.
 
@@ -359,5 +369,5 @@ Copyright (c) 2024-2026 [Lexato](https://lexato.com.br). Todos os direitos reser
 
 <p align="center">
   Desenvolvido com arquitetura Zero Trust por <a href="https://lexato.com.br">Lexato</a><br/>
-  Transparência, privacidade e validade jurídica para o mercado jurídico brasileiro.
+  Transparência, segurança e validade jurídica para provas digitais no Brasil.
 </p>
