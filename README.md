@@ -1,3 +1,17 @@
+> **AVISO DE DEPRECACAO**
+>
+> Este repositorio esta **descontinuado** e arquivado apenas para fins de referencia historica.
+>
+> A extensao Chrome da Lexato foi substituida pelo **[Lexato Desktop](https://lexato.com.br)** — um aplicativo nativo com recursos significativamente superiores, incluindo gravacao de video com certificacao em tempo real, captura de tela com metadados forenses avancados, e integracao completa com a plataforma de certificacao Lexato.
+>
+> **Para captura e certificacao de provas digitais, utilize o Lexato Desktop:**
+> - Site oficial: [lexato.com.br](https://lexato.com.br)
+> - Download: disponivel diretamente no site
+>
+> Este codigo permanece disponivel sob licenca Apache 2.0 para consulta e auditoria, mas nao recebera mais atualizacoes, correcoes de seguranca ou suporte tecnico.
+
+---
+
 <p align="center">
   <a href="https://lexato.com.br">
     <img src="src/assets/branding/icon-128.png" alt="Lexato" width="80" height="80" />
